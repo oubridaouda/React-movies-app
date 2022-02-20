@@ -1,4 +1,6 @@
 import React from 'react';
+import Zoom from 'react-medium-image-zoom'
+import '../styles/styles.css'
 
 const Card = ({movie}) => {
     const dateFormater = (date) => {
@@ -81,7 +83,7 @@ const Card = ({movie}) => {
         }
     }
 
-    const deleteStorage= () =>{
+    const deleteStorage = () => {
         let storedData = window.localStorage.movies.split(",");
 
         let newData = storedData.filter((id) => id != movie.id);
@@ -91,8 +93,12 @@ const Card = ({movie}) => {
     return (
         <div className="card">
             <div className="item-1">
-                <img src={movie.poster_path ?
-                    "https://image.tmdb.org/t/p/w500/" + movie.poster_path : "./img/poster.jpg"} alt="affiche film"/>
+                <Zoom>
+
+                    <img src={movie.poster_path ?
+                        "https://image.tmdb.org/t/p/w500/" + movie.poster_path : "./img/poster.jpg"} width="170"
+                         alt="affiche film"/>
+                </Zoom>
             </div>
             <div className="item-2">
                 <h2>{movie.title}</h2>
